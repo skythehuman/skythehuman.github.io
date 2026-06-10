@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>이하늘 Haneul Lee — CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ───── reset & base ───── */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; scroll-padding-top:72px; }
+body {
+  font-family:'IBM Plex Sans KR','Pretendard',system-ui,sans-serif;
+  background:#fff; color:#1a1a1a;
+  line-height:1.7; font-size:16px; font-weight:400;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ───── palette ───── */
+:root {
+  --sky: #5bb8f0;
+  --sky-light: #daeefa;
+  --sky-pale: #f0f8ff;
+  --black: #111;
+  --gray-900: #1a1a1a;
+  --gray-700: #444;
+  --gray-500: #777;
+  --gray-300: #bbb;
+  --gray-200: #ddd;
+  --gray-100: #eee;
+  --white: #fff;
+  --bg: #fff;
+}
+
+/* ───── scrollbar ───── */
+::-webkit-scrollbar { width:6px; }
+::-webkit-scrollbar-track { background:transparent; }
+::-webkit-scrollbar-thumb { background:var(--gray-300); border-radius:3px; }
+
+/* ───── navigation ───── */
+.nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  background:rgba(255,255,255,0.92); backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--gray-200);
+  transition:box-shadow .3s;
+}
+.nav.scrolled { box-shadow:0 1px 12px rgba(0,0,0,0.06); }
+.nav-inner {
+  max-width:960px; margin:0 auto;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 24px; height:60px;
+}
+.nav-logo {
+  font-weight:700; font-size:15px; letter-spacing:-0.3px;
+  color:var(--black); text-decoration:none;
+}
+.nav-logo span { color:var(--sky); }
+.nav-links { display:flex; gap:6px; }
+.nav-links a {
+  font-size:13px; font-weight:500; color:var(--gray-700);
+  text-decoration:none; padding:6px 12px; border-radius:6px;
+  transition:color .2s, background .2s;
+}
+.nav-links a:hover { color:var(--gray-700); }
+.nav-links a.active {
+  color:var(--sky); background:var(--sky-pale);
+}
+
+/* mobile hamburger */
+.hamburger {
+  display:none; background:none; border:none; cursor:pointer;
+  width:28px; height:28px; position:relative;
+}
+.hamburger span {
+  display:block; width:20px; height:2px; background:var(--black);
+  position:absolute; left:4px; transition:all .25s;
+}
+.hamburger span:nth-child(1) { top:8px; }
+.hamburger span:nth-child(2) { top:13px; }
+.hamburger span:nth-child(3) { top:18px; }
+.hamburger.open span:nth-child(1) { transform:rotate(45deg); top:13px; }
+.hamburger.open span:nth-child(2) { opacity:0; }
+.hamburger.open span:nth-child(3) { transform:rotate(-45deg); top:13px; }
+
+.mobile-menu {
+  display:none; position:fixed; top:60px; left:0; right:0;
+  background:var(--white); border-bottom:1px solid var(--gray-200);
+  padding:12px 24px 20px; flex-direction:column; gap:4px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.08);
+}
+.mobile-menu.open { display:flex; }
+.mobile-menu a {
+  font-size:15px; font-weight:500; color:var(--gray-700);
+  text-decoration:none; padding:10px 12px; border-radius:8px;
+  transition:all .2s;
+}
+.mobile-menu a:hover { color:var(--gray-700); }
+
+@media(max-width:768px) {
+  .nav-links { display:none; }
+  .hamburger { display:block; }
+}
+
+/* ───── hero / header ───── */
+.hero {
+  padding:120px 24px 60px;
+  text-align:center;
+  background:linear-gradient(180deg, var(--sky-pale) 0%, transparent 100%);
+}
+.hero-inner { max-width:640px; margin:0 auto; }
+
+.profile-ring {
+  width:130px; height:130px; border-radius:50%;
+  background:transparent;
+  padding:0; margin:0 auto 28px;
+}
+.profile-img {
+  width:100%; height:100%; border-radius:50%;
+  background:var(--white); display:flex; align-items:center;
+  justify-content:center; overflow:hidden;
+  font-size:42px; font-weight:700; color:var(--sky);
+  letter-spacing:1px;
+}
+.profile-img img {
+  width:100%; height:100%; object-fit:cover; border-radius:50%;
+}
+
+.hero h1 {
+  font-size:32px; font-weight:700; letter-spacing:-0.5px;
+  margin-bottom:6px; color:var(--black);
+}
+.hero h1 small {
+  font-weight:400; font-size:20px; color:var(--gray-500);
+  margin-left:8px;
+}
+.hero .tagline {
+  font-size:15px; color:var(--gray-500); font-weight:400;
+  margin-bottom:20px; letter-spacing:0.2px;
+}
+.hero-links {
+  display:flex; flex-wrap:wrap; gap:10px;
+  justify-content:center; margin-top:16px;
+}
+.hero-links a {
+  font-size:13px; font-weight:500; color:var(--gray-700);
+  text-decoration:none; padding:7px 16px;
+  border:1px solid var(--gray-200); border-radius:20px;
+  transition:all .2s; display:inline-flex; align-items:center; gap:6px;
+}
+.hero-links a:hover {
+  color:var(--gray-700); border-color:var(--gray-200);
+  background:transparent;
+}
+.hero-links a svg { width:14px; height:14px; flex-shrink:0; }
+
+/* ───── sections ───── */
+.section {
+  max-width:960px; margin:0 auto;
+  padding:56px 24px 0;
+}
+.section-title {
+  font-size:22px; font-weight:700; color:var(--black);
+  margin-bottom:32px; padding-bottom:10px;
+  border-bottom:2px solid var(--black);
+  display:flex; align-items:center; gap:10px;
+}
+.section-title .dot {
+  width:8px; height:8px; border-radius:50%;
+  background:var(--sky); flex-shrink:0;
+}
+
+/* ───── about ───── */
+.about-text {
+  font-size:15px; line-height:1.85; color:var(--gray-700);
+  max-width:720px;
+}
+.about-text strong { color:var(--black); font-weight:600; }
+.keyword-chips {
+  display:flex; flex-wrap:wrap; gap:8px; margin-top:20px;
+}
+.keyword-chips span {
+  font-size:12px; font-weight:500; color:var(--sky);
+  background:var(--sky-pale); border:1px solid var(--sky-light);
+  padding:4px 14px; border-radius:14px;
+}
+
+/* ───── timeline cards ───── */
+.timeline { display:flex; flex-direction:column; gap:0; }
+.timeline-item {
+  display:grid;
+  grid-template-columns:140px 1fr;
+  gap:0 24px;
+  padding:24px 0;
+  border-bottom:1px solid var(--gray-100);
+}
+.timeline-item:last-child { border-bottom:none; }
+.timeline-date {
+  font-family:'IBM Plex Mono',monospace;
+  font-size:13px; color:var(--gray-500); padding-top:2px;
+  white-space:nowrap;
+}
+.timeline-content h3 {
+  font-size:15px; font-weight:600; color:var(--black);
+  margin-bottom:4px; line-height:1.5;
+}
+.timeline-content .org {
+  font-size:13px; color:var(--sky); font-weight:500;
+  margin-bottom:6px;
+}
+.timeline-content .desc {
+  font-size:13.5px; color:var(--gray-700); line-height:1.75;
+}
+.timeline-content .desc li {
+  margin-left:16px; margin-bottom:2px;
+  list-style:none; position:relative; padding-left:12px;
+}
+.timeline-content .desc li::before {
+  content:''; position:absolute; left:0; top:9px;
+  width:4px; height:4px; border-radius:50%;
+  background:var(--gray-300);
+}
+.timeline-content .tags {
+  display:flex; flex-wrap:wrap; gap:5px; margin-top:8px;
+}
+.timeline-content .tags span {
+  font-size:11px; font-weight:500; padding:2px 10px;
+  border-radius:10px; background:var(--gray-100); color:var(--gray-700);
+}
+
+@media(max-width:640px) {
+  .timeline-item { grid-template-columns:1fr; gap:4px; }
+  .timeline-date { font-size:12px; }
+}
+
+/* ───── patents ───── */
+.patent-item {
+  padding:18px 0; border-bottom:1px solid var(--gray-100);
+}
+.patent-item:last-child { border-bottom:none; }
+.patent-number {
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px; color:var(--sky); font-weight:500; margin-bottom:4px;
+}
+.patent-title { font-size:14px; color:var(--gray-900); line-height:1.6; }
+.patent-meta {
+  font-size:12px; color:var(--gray-500); margin-top:3px;
+}
+
+/* ───── publications ───── */
+.pub-item {
+  padding:18px 0; border-bottom:1px solid var(--gray-100);
+}
+.pub-item:last-child { border-bottom:none; }
+.pub-year {
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px; color:var(--gray-500); margin-bottom:4px;
+}
+.pub-citation {
+  font-size:14px; color:var(--gray-700); line-height:1.7;
+}
+.pub-citation .author-me { font-weight:600; color:var(--black); }
+.pub-citation .pub-title-text { font-style:italic; }
+.pub-citation .venue { color:var(--gray-500); }
+.pub-citation a {
+  color:var(--sky); text-decoration:none;
+  border-bottom:1px solid transparent;
+  transition:border-color .2s;
+}
+.pub-citation a:hover { border-bottom-color:var(--sky); text-decoration:none; }
+.pub-type {
+  display:inline-block; font-size:10px; font-weight:600;
+  text-transform:uppercase; letter-spacing:0.5px;
+  padding:2px 8px; border-radius:4px; margin-bottom:6px;
+}
+.pub-type.journal { background:#e8f5e9; color:#2e7d32; }
+.pub-type.conference { background:#fff3e0; color:#e65100; }
+.pub-type.proceedings { background:#e3f2fd; color:#1565c0; }
+
+/* ───── education ───── */
+.edu-item {
+  padding:20px 0; border-bottom:1px solid var(--gray-100);
+}
+.edu-item:last-child { border-bottom:none; }
+.edu-degree {
+  font-size:15px; font-weight:600; color:var(--black); margin-bottom:3px;
+}
+.edu-school { font-size:14px; color:var(--sky); font-weight:500; margin-bottom:4px; }
+.edu-thesis {
+  font-size:13px; color:var(--gray-500); line-height:1.6;
+  font-style:italic;
+}
+
+/* ───── skills ───── */
+.skills-grid {
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+  gap:16px;
+}
+.skill-card {
+  padding:20px; border-radius:12px;
+  border:1px solid var(--gray-200); background:var(--white);
+}
+.skill-card h4 {
+  font-size:13px; font-weight:600; color:var(--black);
+  margin-bottom:10px; text-transform:uppercase; letter-spacing:0.5px;
+}
+.skill-card .skill-tags {
+  display:flex; flex-wrap:wrap; gap:6px;
+}
+.skill-card .skill-tags span {
+  font-size:12.5px; font-weight:400; color:var(--gray-700);
+  background:var(--bg); padding:4px 12px; border-radius:6px;
+  border:1px solid var(--gray-100);
+}
+
+/* ───── footer ───── */
+.footer {
+  text-align:center; padding:48px 24px 36px;
+  margin-top:56px; border-top:1px solid var(--gray-200);
+}
+.footer p {
+  font-size:12px; color:var(--gray-500);
+}
+.footer a { color:var(--sky); text-decoration:none; }
+
+/* ───── fade-in animations ───── */
+.fade-up {
+  opacity:0; transform:translateY(24px);
+  transition:opacity .5s ease, transform .5s ease;
+}
+.fade-up.visible { opacity:1; transform:translateY(0); }
+
+/* ───── external link indicator ───── */
+a[href^="http"]::after,
+a[href^="https"]::after {
+  content:'↗'; font-size:10px; margin-left:2px;
+  vertical-align:super; opacity:0.6;
+}
+.nav-logo::after, .hero-links a::after, .nav-links a::after, .mobile-menu a::after { content:'' !important; }
+
+/* ───── back to top ───── */
+.back-to-top {
+  position:fixed; bottom:24px; right:24px; z-index:90;
+  width:42px; height:42px; border-radius:50%;
+  background:var(--sky); color:var(--white);
+  border:none; cursor:pointer; font-size:18px;
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; transform:translateY(12px);
+  transition:opacity .3s, transform .3s, background .2s;
+  box-shadow:0 2px 10px rgba(91,184,240,0.3);
+}
+.back-to-top.visible { opacity:1; transform:translateY(0); }
+
+/* ───── print ───── */
+@media print {
+  .nav, .hamburger, .mobile-menu, .back-to-top { display:none !important; }
+  .hero { padding-top:40px; }
+  .section { break-inside:avoid; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVIGATION ═══ -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">이하늘<span>.</span></a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#patents">Patents</a>
+      <a href="#publications">Publications</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">About</a>
+  <a href="#experience">Experience</a>
+  <a href="#patents">Patents</a>
+  <a href="#publications">Publications</a>
+  <a href="#education">Education</a>
+  <a href="#skills">Skills</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="profile-ring">
+      <div class="profile-img" id="profileImg">HL</div>
+    </div>
+    <h1>이하늘 <small>Haneul Lee</small></h1>
+    <p class="tagline">Data Analytics · GIS · Machine Learning</p>
+    <p class="tagline" style="font-size:13px; margin-top:-12px;">
+      KAIST Urban Design Lab. · PhD Candidate · Seoul
+    </p>
+    <div class="hero-links">
+      <a href="mailto:contact.skylee@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+        contact.skylee@gmail.com
+      </a>
+      <a href="https://github.com/skythehuman" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844a9.59 9.59 0 012.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        GitHub
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ ABOUT ═══ -->
+<section class="section fade-up" id="about">
+  <h2 class="section-title"><span class="dot"></span>About</h2>
+  <div class="about-text">
+    <strong>KAIST 건설및환경공학과</strong>에서 스마트도시시스템을 전공 중인 박사과정 연구자입니다. 
+    머신러닝과 GIS 공간분석을 활용하여 도시 환경 소음 문제를 해결하는 연구를 수행하고 있으며, 
+    박사 학위논문 <em>"Toward Healthy Urban Soundscapes: Machine Learning Framework for Noise Source Classification, Health Risk Assessment, and Spatial Analysis"</em>를 준비 중입니다 (지도교수: 김영철).
+    <br><br>
+    정부 부처 및 산학 협력 프로젝트에서 PM 및 연구원으로 다수 참여하였으며, 
+    AI 기반 소음원 분류, 온실가스 저감을 위한 도시공간 계획, VR/AR 기반 지하도시 설계, 
+    모빌리티 수요예측 등 다양한 분야의 프로젝트를 기획·실행한 경험이 있습니다.
+    4건의 특허 등록과 11편의 학술 논문 실적을 보유하고 있습니다.
+  </div>
+  <div class="keyword-chips">
+    <span>Urban Soundscape</span>
+    <span>Machine Learning</span>
+    <span>Deep Learning (CNN)</span>
+    <span>GIS Spatial Analysis</span>
+    <span>Smart City</span>
+    <span>Python</span>
+    <span>Data Pipeline</span>
+    <span>Project Management</span>
+  </div>
+</section>
+
+<!-- ═══ WORK EXPERIENCE ═══ -->
+<section class="section fade-up" id="experience">
+  <h2 class="section-title"><span class="dot"></span>Work Experience</h2>
+  <div class="timeline">
+
+    <!-- KAIST UDL -->
+    <div class="timeline-item">
+      <div class="timeline-date">2019.09 – 현재</div>
+      <div class="timeline-content">
+        <h3>PM, 연구원</h3>
+        <div class="org">KAIST Urban Design Lab. · 한국과학기술원</div>
+        <ul class="desc">
+          <li><strong>소음-제로 도시를 위한 소음 유형분석 기술 개발</strong> — AI 기반 소음원 분류 프로젝트 단독 총괄, CNN 딥러닝으로 17개 환경소음원 분류 정확도 96% 달성 (PM, 기여도 100%)</li>
+          <li><strong>온실가스 저감을 위한 국토 도시공간 계획 및 관리 기술 개발</strong> — Python 머신러닝과 GIS 공간분석 활용, 녹지공간 평가 알고리즘 구축 및 대규모 컨소시엄 데이터 관리 총괄 (기여도 70%)</li>
+          <li><strong>가상/증강현실 기반 지하도시 공간설계 기술개발</strong> — 도시인프라·VR·헬스 다학제 팀 디렉팅, 특허 등록 완료 (PM, 기여도 70%)</li>
+          <li><strong>소규모 건축물 에너지 등급 평가 알고리즘 개발</strong> — QGIS와 Python 활용 머신러닝 학습용 데이터셋 구축 (기여도 40%)</li>
+          <li><strong>WSUD 기반 도시 물순환 회복방안 연구</strong> — 국내 도시 계획·법규 적합 가이드라인 수립 (기여도 30%)</li>
+          <li><strong>마곡지구 스마트시티 기초조사</strong> — MaaS, 디지털 트윈, 로봇 서비스 등 솔루션 제안 (기여도 20%)</li>
+          <li><strong>수요기반 이동서비스 수요예측방법 도출</strong> — GIS 기반 시계열 분석 기법 제안, 특허 등록 (기여도 30%)</li>
+        </ul>
+        <div class="tags">
+          <span>Python</span><span>CNN</span><span>GIS</span><span>머신러닝</span><span>VR/AR</span><span>스마트시티</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- auri -->
+    <div class="timeline-item">
+      <div class="timeline-date">2025.08 – 2025.10</div>
+      <div class="timeline-content">
+        <h3>조사원</h3>
+        <div class="org">공간AI·빅데이터본부 · 건축공간연구원 (AURI)</div>
+        <div class="desc">범죄예방환경지표를 이용한 지역주민 설문조사 데이터 가공 및 분석, 단행본 시각화 작업</div>
+        <div class="tags"><span>데이터 분석</span><span>시각화</span></div>
+      </div>
+    </div>
+
+    <!-- 울산대 강사 -->
+    <div class="timeline-item">
+      <div class="timeline-date">2023.09 – 2023.12</div>
+      <div class="timeline-content">
+        <h3>강사</h3>
+        <div class="org">건축학부 · 울산대학교</div>
+        <div class="desc">3~5학년 학부생 39명 대상 전공 수업 — 도시계획론 (R00237-01)</div>
+        <div class="tags"><span>강의</span><span>도시계획</span></div>
+      </div>
+    </div>
+
+    <!-- KAIST TA -->
+    <div class="timeline-item">
+      <div class="timeline-date">2021.03 – 2023.06</div>
+      <div class="timeline-content">
+        <h3>강의 조교</h3>
+        <div class="org">건설및환경공학과 · 한국과학기술원 (KAIST)</div>
+        <div class="desc">강의 자료 제작 및 AutoCAD 실습 진행 — 도시건축학개론 (CE240), 도시건축디자인스튜디오 (CE441), 도시연구특론 (CE481)</div>
+        <div class="tags"><span>AutoCAD</span><span>강의</span></div>
+      </div>
+    </div>
+
+    <!-- UNIST -->
+    <div class="timeline-item">
+      <div class="timeline-date">2019.04 – 2019.07</div>
+      <div class="timeline-content">
+        <h3>연구원</h3>
+        <div class="org">도시환경공학부 · 울산과학기술원 (UNIST)</div>
+        <div class="desc">국내외 마을공동체의 지역화폐 사례조사 및 리빙랩 적용을 위한 fSM 프레임워크 디자인</div>
+        <div class="tags"><span>리빙랩</span><span>지역화폐</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ PATENTS ═══ -->
+<section class="section fade-up" id="patents">
+  <h2 class="section-title"><span class="dot"></span>Patents</h2>
+
+  <div class="patent-item">
+    <div class="patent-number">제10-2883157호</div>
+    <div class="patent-title">온실가스 저감을 위한 도시 녹지의 도시적 맥락의 수목생장 가능영역 평가 시스템</div>
+    <div class="patent-meta">KAIST · 2025.11 등록</div>
+  </div>
+
+  <div class="patent-item">
+    <div class="patent-number">제10-2823126호</div>
+    <div class="patent-title">가상 지하공간 이동 환경 구현 시스템</div>
+    <div class="patent-meta">KAIST · 2025.06 등록</div>
+  </div>
+
+  <div class="patent-item">
+    <div class="patent-number">제10-2823120호</div>
+    <div class="patent-title">소셜 미디어를 이용한 도시 소리 환경 측정 시스템 및 방법</div>
+    <div class="patent-meta">KAIST · 2025.06 등록</div>
+  </div>
+
+  <div class="patent-item">
+    <div class="patent-number">제10-2441523호</div>
+    <div class="patent-title">수요기반 이동서비스를 위한 수요예측방법</div>
+    <div class="patent-meta">현대오토에버-KAIST · 2022.09 등록</div>
+  </div>
+</section>
+
+<!-- ═══ PUBLICATIONS ═══ -->
+<section class="section fade-up" id="publications">
+  <h2 class="section-title"><span class="dot"></span>Publications</h2>
+
+  <div class="pub-item">
+    <span class="pub-type journal">Journal</span>
+    <div class="pub-year">2026</div>
+    <div class="pub-citation">
+      <span class="author-me">Lee, H.</span>, &amp; Kim, Y. (2026). 
+      <span class="pub-title-text">"Mapping urban soundscape patterns using user-generated content: A place model approach to acoustic environment perception"</span>, 
+      <a href="https://doi.org/10.1371/journal.pone.0343393" target="_blank" rel="noopener">PloS One 21(2): e0343393</a>.
+    </div>
+  </div>
+
+  <div class="pub-item">
+    <span class="pub-type conference">Conference</span>
+    <div class="pub-year">2025</div>
+    <div class="pub-citation">
+      <span class="author-me">Lee, H.</span>, &amp; Kim, Y. (2025, August). 
+      <span class="pub-title-text">"Spatial Distribution of Urban Noise Exposure and Disease Burden: Health Impacts of Environmental Noise in Seoul, Korea"</span>. 
+      <span class="venue">2025 International Conference of Asia-Pacific Planning Societies, Hsinchu City, Taiwan.</span>
+    </div>
+  </div>
+
+  <div class="pub-item">
+    <span class="pub-type journal">Journal</span>
+    <div class="pub-year">2023</div>
+    <div class="pub-citation">
+      Nho, S.Y., <span class="author-me">Lee, H.</span>, Noh, S., &amp; Kim, Y. (2023). 
+      <span class="pub-title-text">"Future Underground City Design Strategies using TBM Technology"</span>, 
+      <span class="venue">Journal of Smart City, 4(1), 17-22.</span>
+    </div>
+  </div>
+
+  <div class="pub-item">
+    <span class="pub-type conference">Conference</span>
+    <div class="pub-year">2023</div>
+    <div class="pub-citation">
+      <span class="author-me">Lee, H.</span>, Noh, S., Nho, S.Y., &amp; Kim, Y. (2023, August). 
+      <span class="pub-title-text">"Urban design strategies for long-term residence in the future underground city"</span>. 
+      <span class="venue">The 2023 World Congress on Advances in Structural Engineering and Mechanics, Seoul, Korea.</span>
+    </div>
+  </div>
+
+  <div class="pub-item">
+    <span class="pub-type journal">Journal</span>
+    <div class="pub-year">2022</div>
+    <div class="pub-citation">
+      Kim, J., Kim, Y., Oh, M., <span class="author-me">Lee, H.</span>, Lee, H.K., Oh, M.Y., &amp; Kim, Y. (2022). 
+      <span class="pub-title-text">"Calculating Potential Green Area Impact on Land Uses to Estimate Future Green Areas in Land Use Planning"</span>, 
+      <span class="venue">KIEAE Journal, 22(6), 37-43.</span>
+    </div>
+  </div>
+
+  <div class="pub-item">
+    <span class="pub-type conference">Conference</span>
+    <div class="pub-year">2022</div>
+    <div class="pub-citation">
+      <span class="author-me">Lee, H.</span>, Oh, M., Kim, Y., Kim, J., Lee, H. K., Oh, M., Kim, G., &amp; Kim, Y. (2022, August). 
+      <span class="pub-title-text">"Analysis of Potential Urban Green Spaces for Absorption of Greenhouse Gas"</span>. 
+      <span class="venue">2022 International Conference of Asia-Pacific Planning Societies, Nagasaki, Japan.</span>
+    </div>
+  </div>
+
+  <div class="pub-item">
+    <span class="pub-type proceedings">Proceedings</span>
+    <div class="pub-year">2022</div>
+    <div class="pub-citation">
+      <span class="author-me">Lee, H.</span>, &amp; Kim, Y. (2022). 
+      <span class="pub-title-text">"Relationships between Noise Level Changes and Spatial Characteristics: Focusing on COVID-19 Spread in Seoul, South Korea"</span>, 
+      <span class="venue">Proceedings of Korea Institute of Ecological Architecture and Environment, 22(1), 50-51.</span>
+    </div>
+  </div>
+
+  <div class="pub-item">
+    <span class="pub-type conference">Conference</span>
+    <div class="pub-year">2022</div>
+    <div class="pub-citation">
+      <span class="author-me">Lee, H.</span>, Oh, M., Lee, H. K., &amp; Kim, Y. (2022, April). 
+      <span class="pub-title-text">"A Study on Land Use Typology for the Estimation of Greenhouse Gas Absorption and Emission"</span>. 
+      <span class="venue">2022 Spring Congress of Korea Planning Association, Jeju, Korea.</span>
+    </div>
+  </div>
+
+  <div class="pub-item">
+    <span class="pub-type proceedings">Proceedings</span>
+    <div class="pub-year">2020</div>
+    <div class="pub-citation">
+      Park, S., <span class="author-me">Lee, H.</span>, Kim, Y., &amp; Kwon, Y. S. (2020). 
+      <span class="pub-title-text">"A Study on Development of Land Use Planning and District Unit Planning Techniques for Improving Urban Water Circulation"</span>, 
+      <span class="venue">Proceedings of Urban Design Institute of Korea, 11(1), 475-482.</span>
+    </div>
+  </div>
+
+  <div class="pub-item">
+    <span class="pub-type conference">Conference</span>
+    <div class="pub-year">2020</div>
+    <div class="pub-citation">
+      <span class="author-me">Lee, H.</span>, &amp; Kim, Y. (2020, October). 
+      <span class="pub-title-text">"Urban Soundscape Analysis of Gangnam in Seoul, Korea"</span>. 
+      <span class="venue">2020 Fall Congress of Korea Planning Association, Seoul, Korea.</span>
+    </div>
+  </div>
+
+  <div class="pub-item">
+    <span class="pub-type proceedings">Proceedings</span>
+    <div class="pub-year">2020</div>
+    <div class="pub-citation">
+      Oh, M., <span class="author-me">Lee, H.</span>, &amp; Kim, Y. (2020). 
+      <span class="pub-title-text">"Development of Land Use Optimization Method for Reducing Commute Time Using Genetic Algorithm"</span>, 
+      <span class="venue">Proceedings of the 10th EDISON Challenge, 10(1), 38-42.</span>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══ EDUCATION ═══ -->
+<section class="section fade-up" id="education">
+  <h2 class="section-title"><span class="dot"></span>Education</h2>
+
+  <div class="edu-item">
+    <div class="timeline-date" style="font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--gray-500); margin-bottom:6px;">2026.08 (졸업예정)</div>
+    <div class="edu-degree">PhD Candidate · 건설및환경공학과 스마트도시시스템</div>
+    <div class="edu-school">한국과학기술원 (KAIST)</div>
+    <div class="edu-thesis">학위논문: Toward Healthy Urban Soundscapes: Machine Learning Framework for Noise Source Classification, Health Risk Assessment, and Spatial Analysis (지도교수: 김영철)</div>
+  </div>
+
+  <div class="edu-item">
+    <div class="timeline-date" style="font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--gray-500); margin-bottom:6px;">2021.08</div>
+    <div class="edu-degree">MS · 건설및환경공학과 도시설계및계획</div>
+    <div class="edu-school">한국과학기술원 (KAIST)</div>
+    <div class="edu-thesis">학위논문: Crowdsourcing Urban Soundscape in Seoul using Social Media (지도교수: 김영철)</div>
+  </div>
+
+  <div class="edu-item">
+    <div class="timeline-date" style="font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--gray-500); margin-bottom:6px;">2019.02</div>
+    <div class="edu-degree">B.Arch · 건축대학 건축학전공</div>
+    <div class="edu-school">울산대학교</div>
+  </div>
+
+</section>
+
+<!-- ═══ SKILLS ═══ -->
+<section class="section fade-up" id="skills">
+  <h2 class="section-title"><span class="dot"></span>Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <h4>공간분석</h4>
+      <div class="skill-tags"><span>ArcGIS</span><span>QGIS</span></div>
+    </div>
+    <div class="skill-card">
+      <h4>프로그래밍</h4>
+      <div class="skill-tags"><span>Python</span><span>C/C++</span><span>PostgreSQL</span></div>
+    </div>
+    <div class="skill-card">
+      <h4>디자인</h4>
+      <div class="skill-tags">
+        <span>Photoshop</span><span>Illustrator</span><span>InDesign</span>
+        <span>Premiere Pro</span><span>Figma</span><span>AutoCAD</span><span>Rhinoceros</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <h4>문서작성</h4>
+      <div class="skill-tags"><span>Word</span><span>PowerPoint</span><span>Excel</span></div>
+    </div>
+    <div class="skill-card">
+      <h4>언어</h4>
+      <div class="skill-tags">
+        <span>한국어 (원어민)</span><span>영어 (고급)</span><span>일본어 (일상회화)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <p>&copy; 2026 이하늘 Haneul Lee · Built for <a href="https://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a></p>
+</footer>
+
+<!-- back to top -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+<script>
+// ── nav scroll effect ──
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 10);
+});
+
+// ── hamburger ──
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+mobileMenu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  });
+});
+
+// ── active nav link ──
+const sections = document.querySelectorAll('.section');
+const navLinks = document.querySelectorAll('.nav-links a');
+const observerNav = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+    }
+  });
+}, { rootMargin: '-100px 0px -60% 0px', threshold: 0 });
+sections.forEach(s => observerNav.observe(s));
+
+// ── fade-in on scroll ──
+const fadeEls = document.querySelectorAll('.fade-up');
+const observerFade = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observerFade.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08 });
+fadeEls.forEach(el => observerFade.observe(el));
+
+// ── back to top ──
+const btn = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  btn.classList.toggle('visible', window.scrollY > 400);
+});
+btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>
+
+</body>
+</html>
