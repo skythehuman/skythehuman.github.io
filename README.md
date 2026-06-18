@@ -1,2 +1,2 @@
 ### skythehuman.github.io
-#### Web CV
+**[Read CV](skythehuman.github.io)**
