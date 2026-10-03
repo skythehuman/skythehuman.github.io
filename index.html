@@ -138,19 +138,24 @@ body {
 }
 .hero-links {
   display:flex; flex-wrap:wrap; gap:10px;
-  justify-content:center; margin-top:16px;
+  justify-content:center; align-items:center; margin-top:16px;
 }
 .hero-links a {
   font-size:13px; font-weight:500; color:var(--gray-700);
   text-decoration:none; padding:7px 16px;
   border:1px solid var(--gray-200); border-radius:20px;
-  transition:all .2s; display:inline-flex; align-items:center; gap:6px;
+  transition:all .2s; display:inline-flex; align-items:center; 
+  justify-content:center; gap:6px; line-height:1px;
 }
 .hero-links a:hover {
   color:var(--gray-700); border-color:var(--gray-200);
   background:transparent;
 }
-.hero-links a svg { width:14px; height:14px; flex-shrink:0; }
+.hero-links a svg { width:14px; height:14px; flex-shrink:0; display:block;
+}
+.hero-links a::after {
+  display:none !important;
+}
 
 /* ───── sections ───── */
 .section {
